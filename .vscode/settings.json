@@ -3,5 +3,22 @@
     {
       "mode": "auto"
     }
+  ],
+  "coddx.taskBoard.fileList": ".tasks/TODO.md, apps/tasks/TODO.md",  "material-icon-theme.folders.customClones": [
+    {
+      "name": "users-admin",
+      "base": "admin",
+      "color": "light-green-500",
+      "lightColor": "light-green-700",
+      "folderNames": ["user"],
+      "rootFolderNames": ["users"]
+    },
+    {
+      "name": "roles-admin",
+      "base": "admin",
+      "color": "purple-400",
+      "folderNames": ["roles"],
+      "rootFolderNames": ["users"]
+    }
   ]
 }

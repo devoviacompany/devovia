@@ -1,6 +1,26 @@
 {
   "name": "devovia",
+  "version": "0.1.0-beta.1",
   "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Devovia",
+    "email": "devoviacompany@gmail.com",
+    "url": "https://devovia.tech"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devovia"
+  },
+  "description": "Devovia is an AI SaaS Builder",
+  "homepage": "https://devovia.tech",
+  "bugs": {
+    "url": "https://github.com/devovia"
+  },
+  "keywords": [
+    "Devovia",
+    "AI SaaS Builder"
+  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
