@@ -4,21 +4,129 @@
       "mode": "auto"
     }
   ],
-  "coddx.taskBoard.fileList": ".tasks/TODO.md, apps/tasks/TODO.md",  "material-icon-theme.folders.customClones": [
+  "coddx.taskBoard.fileList": ".tasks/TODO.md, apps/tasks/TODO.md", 
+  "material-icon-theme.folders.customClones": [
     {
       "name": "users-admin",
       "base": "admin",
       "color": "light-green-500",
       "lightColor": "light-green-700",
       "folderNames": ["user"],
-      "rootFolderNames": ["users"]
+      "rootFolderNames": ["user"]
+    },
+    // AI Agents
+    {
+      "name": "ai-folder",
+      "base": "quasar",
+      "color": "purple-400",
+      "lightColor": "purple-600",
+      "folderNames": ["ai"],
+      "rootFolderNames": ["ai"]
     },
     {
-      "name": "roles-admin",
-      "base": "admin",
+      "name": "nova-agent",
+      "base": "custom",
+      "color": "orange-400",
+      "lightColor": "orange-600",
+      "folderNames": ["nova"]
+    },
+    {
+      "name": "leonardo-folder",
+      "base": "theme",
+      "color": "pink-400",
+      "lightColor": "pink-600",
+      "folderNames": ["leonardo"],
+      "rootFolderNames": ["leonardo"]
+    },
+    {
+      "name": "ovia-agent",
+      "base": "less",
+      "color": "green-400",
+      "lightColor": "green-600",
+      "folderNames": ["ovia"],
+      "rootFolderNames": ["ovia"]
+    },
+    {
+      "name": "omega-agent",
+      "base": "test",
       "color": "purple-400",
-      "folderNames": ["roles"],
-      "rootFolderNames": ["users"]
+      "lightColor": "purple-600",
+      "folderNames": ["omega"],
+      "rootFolderNames": ["omega"]
+    },
+    {
+      "name": "buzz-agent",
+      "base": "server",
+      "color": "blue-400",
+      "lightColor": "blue-600",
+      "folderNames": ["buzz"],
+      "rootFolderNames": ["buzz"]
+    },
+    {
+      "name": "chatbot-agent",
+      "base": "svg",
+      "color": "yellow-400",
+      "lightColor": "yellow-600",
+      "folderNames": ["chatbot"],
+      "rootFolderNames": ["chatbot"]
+    },
+    // Backend Services
+    {
+      "name": "api-gateway-service",
+      "base": "cloudflare",
+      "color": "purple-400",
+      "lightColor": "purple-600",
+      "folderNames": ["api-gateway"],
+      "rootFolderNames": ["api-gateway"]
+    },
+    {
+      "name": "app-service",
+      "base": "element",
+      "color": "blue-400",
+      "lightColor": "blue-600",
+      "folderNames": ["app"],
+      "rootFolderNames": ["app"]
+    },
+    {
+      "name": "builder-service",
+      "base": "template",
+      "color": "green-400",
+      "lightColor": "green-600",
+      "folderNames": ["builder"],
+      "rootFolderNames": ["builder"]
+    },
+    {
+      "name": "community-service",
+      "base": "connection",
+      "color": "yellow-400",
+      "lightColor": "yellow-600",
+      "folderNames": ["community"],
+      "rootFolderNames": ["community"]
+    },
+    {
+      "name": "marketplace-service",
+      "base": "connection",
+      "color": "red-400",
+      "lightColor": "red-600",
+      "folderNames": ["marketplace"],
+      "rootFolderNames": ["marketplace"]
+    },
+    // Databases
+    {
+      "name": "postgresql-db",
+      "base": "connection",
+      "color": "blue-400",
+      "lightColor": "blue-600",
+      "folderNames": ["postgresql"],
+      "rootFolderNames": ["postgresql"]
+    },
+    {
+      "name": "redis-db",
+      "base": "shader",
+      "color": "red-400",
+      "lightColor": "red-600",
+      "folderNames": ["redis"],
+      "rootFolderNames": ["redis"]
     }
   ]
 }

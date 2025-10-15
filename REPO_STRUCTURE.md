@@ -16,15 +16,46 @@ Designed to support:
 ## 🌳 Top-Level Structure
 
 ```
-Devovia/
+devovia/
 ├── .github/                 # GitHub workflows, PR templates, issue templates
+├── .husky/                  # Husky git hooks
+├── .turbo/                  # Turbo repo build files
 ├── .vscode/                 # VSCode settings, recommended extensions
+├── ai/                      # AI/ML microservices
+│   ├── nova/                # AI Planning Agent
+│   ├── leonardo/            # AI Design Agent
+│   ├── ovia/                # AI Development Agent
+│   ├── omega/               # AI Testing Agent
+│   ├── buzz/                # AI Deployment Agent
+│   └── chatbot/             # Chatbot assistant
+│
 ├── apps/                    # Frontend clients (web, desktop, mobile)
-│   ├── web-client/          # Next.js 15 React app
-│   ├── desktop-client/    # Electron.js instructor screen recording app
-│   ├── api-gateway/         # Node.js proxey service for this microservices
-│   └── app/                 # Node.js all app services (auth - user - payment - notfication)
-├── packages/                # Shared code/libs (TypeScript types, API clients)
+│   ├── web/                 # Web Next.js 15 frontend
+│   ├── docs/                # Next.js docs site (marketing/documentation)
+│   ├── dev/                 # Developer Next.js 15 frontend (for developers users)
+│   └── desktop/             # Electron.js desktop client
+│
+├── databases/               # All shared databases (PostgreSQL, Redis, etc.)
+│   ├── postgres/            # PostgreSQL database
+│   └── redis/               # Redis database
+│
+├── services/                # All backend services (NestJS microservices)
+│   ├── api-gateway/         # Auth, API gateway, proxy layer
+│   ├── app/                 # User account, billing, settings service
+│   ├── builder/             # Main project builder engine
+│   ├── community/           # Community service
+│   ├── dev/                 # Developer service
+│   └── marketplace/         # Marketplace service
+│
+├── packages/                # Shared packages
+│   ├── eslint-config/       # ESLint configs
+│   ├── kafka/               # Kafka client for communicating between services
+│   ├── tailwind-config/     # Tailwind configs
+│   ├── types/               # Shared interfaces, DTOs
+│   ├── typescript-config/   # TypeScript configs
+│   ├── ui/                  # Shared ShadCN UI components
+│   └── utils/               # Reusable TS utilities
+│
 ├── docs/                   # PRD, design docs, architecture diagrams
 │   ├── design/             # UI/UX wireframes, branding
 │   ├── idea/               # The Devovia idea and description of it
@@ -34,12 +65,19 @@ Devovia/
 │   ├── user-stories/       # Feature & User Flow Documentation
 │   └── PRD.md
 ├── .dockerignore
+├── .editorconfig
 ├── .gitignore
+├── .npmrc
 ├── CHANGELOG.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── Makefile
-└── README.md
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── README.md
+├── REPO_STRUCTURE.md
+└── turbo.json
 ```
 
 ---

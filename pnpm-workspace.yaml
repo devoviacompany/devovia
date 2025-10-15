@@ -1,3 +1,6 @@
 packages:
+  - "ai/*"
   - "apps/*"
+  - "databases/*"
+  - "services/*"
   - "packages/*"
