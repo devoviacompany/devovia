@@ -39,12 +39,12 @@
       "rootFolderNames": ["leonardo"]
     },
     {
-      "name": "ovia-agent",
+      "name": "devo-agent",
       "base": "less",
       "color": "green-400",
       "lightColor": "green-600",
-      "folderNames": ["ovia"],
-      "rootFolderNames": ["ovia"]
+      "folderNames": ["devo"],
+      "rootFolderNames": ["devo"]
     },
     {
       "name": "omega-agent",
@@ -63,12 +63,12 @@
       "rootFolderNames": ["buzz"]
     },
     {
-      "name": "chatbot-agent",
+      "name": "ovia-agent",
       "base": "svg",
       "color": "yellow-400",
       "lightColor": "yellow-600",
-      "folderNames": ["chatbot"],
-      "rootFolderNames": ["chatbot"]
+      "folderNames": ["ovia_chatbot"],
+      "rootFolderNames": ["ovia_chatbot"]
     },
     // Backend Services
     {
