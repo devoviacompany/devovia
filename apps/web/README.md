@@ -1,4 +1,4 @@
-# Devovia Client Part
+# Devovia Web Part
 
 ## Getting Started
 First, run the development server:

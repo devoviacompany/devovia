@@ -46,4 +46,3 @@ next-env.d.ts
 tasks/
 temp/
 .vscode/
-public/books
