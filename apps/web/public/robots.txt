@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://devovia.tech
+
+# Sitemaps
+Sitemap: https://devovia.tech/sitemap.xml
