@@ -1,0 +1,578 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  font-variant-ligatures: none;
+  --background: oklch(0.9789 0.0082 121.6272);
+  --foreground: oklch(0.1636 0.0067 178.6389);
+  --card: oklch(1.0000 0 0);
+  --card-foreground: oklch(0.1636 0.0067 178.6389);
+  --popover: oklch(1.0000 0 0);
+  --popover-foreground: oklch(0.1636 0.0067 178.6389);
+  --primary: oklch(0.8112 0.2193 135.8293);
+  --primary-foreground: oklch(1.0000 0 0);
+  --secondary: oklch(0.5106 0.2301 276.9656);
+  --secondary-foreground: oklch(1.0000 0 0);
+  --muted: oklch(0.9591 0.0034 145.5490);
+  --muted-foreground: oklch(0.5510 0.0234 264.3637);
+  --accent: oklch(0.7716 0.1501 227.7397);
+  --accent-foreground: oklch(0.1636 0.0067 178.6389);
+  --destructive: oklch(0.6368 0.2078 25.3313);
+  --destructive-foreground: oklch(1.0000 0 0);
+  --border: oklch(0.8717 0.0093 258.3382);
+  --input: oklch(0.7137 0.0192 261.3246);
+  --ring: oklch(0.8112 0.2193 135.8293);
+  --chart-1: oklch(0.8112 0.2193 135.8293);
+  --chart-2: oklch(0.7716 0.1501 227.7397);
+  --chart-3: oklch(0.8803 0.1348 86.0616);
+  --chart-4: oklch(0.6368 0.2078 25.3313);
+  --chart-5: oklch(0.6801 0.1583 276.9349);
+  --sidebar: oklch(0.9846 0.0017 247.8389);
+  --sidebar-foreground: oklch(0.1636 0.0067 178.6389);
+  --sidebar-primary: oklch(0.8112 0.2193 135.8293);
+  --sidebar-primary-foreground: oklch(1.0000 0 0);
+  --sidebar-accent: oklch(0.7716 0.1501 227.7397);
+  --sidebar-accent-foreground: oklch(0.1636 0.0067 178.6389);
+  --sidebar-border: oklch(0.9276 0.0058 264.5313);
+  --sidebar-ring: oklch(0.8112 0.2193 135.8293);
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Cairo", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --radius: 1rem;
+  --shadow-x: 0px;
+  --shadow-y: 0px;
+  --shadow-blur: 0px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.05;
+  --shadow-color: #000000;
+  --shadow-2xs: 0px 0px 0px 0px hsl(0 0% 0% / 0.03);
+  --shadow-xs: 0px 0px 0px 0px hsl(0 0% 0% / 0.03);
+  --shadow-sm: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 1px 2px -1px hsl(0 0% 0% / 0.05);
+  --shadow: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 1px 2px -1px hsl(0 0% 0% / 0.05);
+  --shadow-md: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 2px 4px -1px hsl(0 0% 0% / 0.05);
+  --shadow-lg: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 4px 6px -1px hsl(0 0% 0% / 0.05);
+  --shadow-xl: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 8px 10px -1px hsl(0 0% 0% / 0.05);
+  --shadow-2xl: 0px 0px 0px 0px hsl(0 0% 0% / 0.13);
+  --tracking-normal: normal;
+  --spacing: 0.25rem;
+  /* ============= algolia (docs Search) ============= */
+  --docsearch-primary-color: hsl(var(--primary));
+  --docsearch-text-color: hsl(var(--foreground));
+  --docsearch-spacing: 12px;
+  --docsearch-icon-stroke-width: 1.4;
+  --docsearch-highlight-color: var(--docsearch-primary-color);
+  --docsearch-muted-color: hsl(var(--muted-foreground));
+  --docsearch-container-background: rgba(0, 0, 0, 0.7);
+  --docsearch-logo-color: hsl(var(--primary-foreground));
+  --docsearch-modal-width: 560px;
+  --docsearch-modal-height: 600px;
+  --docsearch-modal-background: hsl(var(--background));
+  --docsearch-modal-shadow: none;
+  --docsearch-searchbox-height: 56px;
+  --docsearch-searchbox-background: hsl(var(--input));
+  --docsearch-searchbox-focus-background: hsl(var(--card));
+  --docsearch-searchbox-shadow: none;
+  --docsearch-hit-height: 56px;
+  --docsearch-hit-color: hsl(var(--foreground));
+  --docsearch-hit-active-color: hsl(var(--primary-foreground));
+  --docsearch-hit-background: hsl(var(--card));
+  --docsearch-hit-shadow: none;
+  --docsearch-key-gradient: none;
+  --docsearch-key-shadow: none;
+  --docsearch-key-pressed-shadow: none;
+  --docsearch-footer-height: 44px;
+  --docsearch-footer-background: hsl(var(--background));
+  --docsearch-footer-shadow: none;
+}
+
+.dark {
+  --background: oklch(0.1636 0.0067 178.6389);
+  --foreground: oklch(0.9765 0.0057 128.5252);
+  --card: oklch(0.1898 0.0094 255.6333);
+  --card-foreground: oklch(0.9765 0.0057 128.5252);
+  --popover: oklch(0.2240 0.0099 248.2672);
+  --popover-foreground: oklch(0.9765 0.0057 128.5252);
+  --primary: oklch(0.8112 0.2193 135.8293);
+  --primary-foreground: oklch(0.1636 0.0067 178.6389);
+  --secondary: oklch(0.6801 0.1583 276.9349);
+  --secondary-foreground: oklch(0.1636 0.0067 178.6389);
+  --muted: oklch(0.2393 0.0142 266.9746);
+  --muted-foreground: oklch(0.7137 0.0192 261.3246);
+  --accent: oklch(0.7716 0.1501 227.7397);
+  --accent-foreground: oklch(0.1636 0.0067 178.6389);
+  --destructive: oklch(0.5054 0.1905 27.5181);
+  --destructive-foreground: oklch(1.0000 0 0);
+  --border: oklch(0.2781 0.0296 256.8480);
+  --input: oklch(0.3351 0.0331 260.9120);
+  --ring: oklch(0.8112 0.2193 135.8293);
+  --chart-1: oklch(0.8112 0.2193 135.8293);
+  --chart-2: oklch(0.7716 0.1501 227.7397);
+  --chart-3: oklch(0.8803 0.1348 86.0616);
+  --chart-4: oklch(0.6368 0.2078 25.3313);
+  --chart-5: oklch(0.6801 0.1583 276.9349);
+  --sidebar: oklch(0.1665 0.0080 248.3050);
+  --sidebar-foreground: oklch(0.9765 0.0057 128.5252);
+  --sidebar-primary: oklch(0.8112 0.2193 135.8293);
+  --sidebar-primary-foreground: oklch(0.1636 0.0067 178.6389);
+  --sidebar-accent: oklch(0.7716 0.1501 227.7397);
+  --sidebar-accent-foreground: oklch(0.1636 0.0067 178.6389);
+  --sidebar-border: oklch(0.2393 0.0142 266.9746);
+  --sidebar-ring: oklch(0.8112 0.2193 135.8293);
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Cairo", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --radius: 1rem;
+  --shadow-x: 0px;
+  --shadow-y: 0px;
+  --shadow-blur: 0px;
+  --shadow-spread: 0px;
+  --shadow-opacity: 0.05;
+  --shadow-color: #000000;
+  --shadow-2xs: 0px 0px 0px 0px hsl(0 0% 0% / 0.03);
+  --shadow-xs: 0px 0px 0px 0px hsl(0 0% 0% / 0.03);
+  --shadow-sm: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 1px 2px -1px hsl(0 0% 0% / 0.05);
+  --shadow: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 1px 2px -1px hsl(0 0% 0% / 0.05);
+  --shadow-md: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 2px 4px -1px hsl(0 0% 0% / 0.05);
+  --shadow-lg: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 4px 6px -1px hsl(0 0% 0% / 0.05);
+  --shadow-xl: 0px 0px 0px 0px hsl(0 0% 0% / 0.05), 0px 8px 10px -1px hsl(0 0% 0% / 0.05);
+  --shadow-2xl: 0px 0px 0px 0px hsl(0 0% 0% / 0.13);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
+
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-normal: var(--tracking-normal);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+}
+
+body {
+  letter-spacing: var(--tracking-normal);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+}
+
+.prose {
+  margin: 0;
+}
+
+/* ---- Docs typography polish ---- */
+.prose h1 {
+  font-weight: 800;
+  line-height: 1.15;
+  margin-top: 0.25rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+  font-size: 2rem;
+}
+@media (min-width: 640px) {
+  .prose h1 { font-size: 2.75rem; }
+}
+
+.prose h2 {
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h3 {
+  font-weight: 700;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p {
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--color-foreground);
+  opacity: 0.9;
+}
+
+.prose strong { color: var(--color-foreground); }
+
+.prose a {
+  color: var(--color-primary);
+  text-underline-offset: 3px;
+}
+
+.prose ul, .prose ol {
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.prose li { margin: 0.25rem 0; }
+
+.prose hr { border-color: var(--color-border); }
+
+/* Blockquote */
+.prose blockquote {
+  border-left: 3px solid color-mix(in oklch, var(--color-primary) 40%, transparent);
+  padding-left: 1rem;
+  color: var(--color-muted-foreground);
+  margin: 1.25rem 0;
+}
+
+/* Inline code pill */
+.prose :not(pre) > code {
+  background-color: color-mix(in oklch, var(--color-muted) 60%, transparent);
+  color: var(--color-foreground);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  padding: 0.125rem 0.375rem;
+}
+
+/* Code block container */
+.prose pre {
+  background-color: color-mix(in oklch, var(--color-foreground) 7%, var(--color-background));
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  overflow-x: auto;
+}
+.prose pre code { background: transparent; border: none; padding: 0; }
+
+pre {
+  padding: 2px 0;
+  width: inherit;
+  overflow-x: auto;
+}
+
+pre>code {
+  display: grid;
+  max-width: inherit;
+  padding: 14px 0;
+}
+
+.code-line {
+  padding: 0.75px 16px;
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-left-color: transparent;
+}
+
+.line-number::before {
+  display: inline-block;
+  width: 1rem;
+  margin-right: 22px;
+  margin-left: -2px;
+  color: rgb(110, 110, 110);
+  content: attr(line);
+  font-size: 13.5px;
+  text-align: right;
+}
+
+.highlight-line {
+  background-color: color-mix(in oklch, var(--color-primary) 5%, transparent);
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-left-color: color-mix(in oklch, var(--color-primary) 30%, transparent);
+}
+
+.rehype-code-title {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin-bottom: -2rem;
+  width: 100%;
+  font-size: 0.875rem;
+  padding-bottom: 1.25rem;
+  font-weight: 500;
+  margin-top: 1.25rem;
+}
+
+.highlight-comp>code {
+  background-color: transparent;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;            /* Chrome, Safari, Opera */
+}
+
+/* Global Custom Scrollbar */
+:root {
+  --scrollbar-thumb: rgba(113,
+      113,
+      122,
+      0.6);
+  /* Subtle dark gray for light mode thumb */
+}
+
+[data-theme="dark"],
+[class*="dark"] {
+  --scrollbar-thumb: rgba(160,
+      160,
+      160,
+      0.4);
+  /* Softer gray for dark mode thumb */
+}
+
+/* Apply globally */
+* {
+  scrollbar-width: thin;
+  /* Firefox thin scrollbar */
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+  /* Thumb color with transparent track */
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  /* Vertical scrollbar width */
+  height: 8px;
+  /* Horizontal scrollbar height */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  /* Thumb color */
+  border-radius: 9999px;
+  /* Fully rounded thumb */
+  border: 2px solid transparent;
+  /* Thin padding effect */
+  background-clip: content-box;
+  /* Smooth thumb edges */
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+  /* Transparent track */
+}
+
+.rehype-code-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+td>code {
+  word-break: keep-all;
+}
+
+/* ============= Syntax ============= */
+.keyword {
+  color: #d73a49;
+  /* GitHub Red */
+}
+
+.function {
+  color: #6f42c1;
+  /* GitHub Purple */
+}
+
+.punctuation {
+  color: #24292e;
+  /* GitHub Black */
+}
+
+.comment {
+  color: #6a737d;
+  /* GitHub Muted Gray */
+}
+
+.string,
+.constant,
+.annotation,
+.boolean,
+.number {
+  color: #005cc5;
+  /* GitHub Blue */
+}
+
+.tag {
+  color: #22863a;
+  /* GitHub Green */
+}
+
+.attr-name {
+  color: #6f42c1;
+  /* GitHub Purple */
+}
+
+.attr-value {
+  color: #e36209;
+  /* GitHub Orange */
+}
+
+/* Dark Mode */
+.dark .keyword {
+  color: #f97583;
+  /* GitHub Light Red */
+}
+
+.dark .function {
+  color: #d2a8ff;
+  /* GitHub Light Purple */
+}
+
+.dark .punctuation {
+  color: #c9d1d9;
+  /* GitHub Light Gray */
+}
+
+.dark .comment {
+  color: #8b949e;
+  /* GitHub Muted Gray */
+}
+
+.dark .string,
+.dark .constant,
+.dark .annotation,
+.dark .boolean,
+.dark .number {
+  color: #79c0ff;
+  /* GitHub Light Blue */
+}
+
+.dark .tag {
+  color: #a5d6ff;
+  /* GitHub Cyan */
+}
+
+.dark .attr-name {
+  color: #d2a8ff;
+  /* GitHub Light Purple */
+}
+
+.dark .attr-value {
+  color: #ffa657;
+  /* GitHub Light Orange */
+}
+
+/* ============= algolia ============= */
+.DocSearch-Modal {
+}
+@media (min-width: 640px) {
+  .DocSearch-Modal { margin-top: 5rem; }
+}
+
+.DocSearch-Button {
+  padding-left: 1rem;
+  margin-left: 0;
+  width: 100% !important;
+  border-radius: 0.375rem;
+  background-color: color-mix(in oklch, var(--color-muted) 55%, transparent);
+}
+@media (min-width: 640px) {
+  .DocSearch-Button { width: 13rem; }
+}
+
+.DocSearch-Button-Placeholder {
+  margin-left: 0.25rem;
+  color: var(--color-muted-foreground);
+  font-size: 14px;
+  display: flex;
+}
+
+.DocSearch-Search-Icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-muted-foreground);
+}
+
+.DocSearch-Button-Keys {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.DocSearch-Form>label>.DocSearch-Search-Icon {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.DocSearch-Input {
+  font-size: 15px;
+}
+
+.DocSearch-SearchBar {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--color-border);
+  padding-bottom: 0.125rem;
+  padding-top: 0.125rem;
+}
+
+.DocSearch-Cancel {
+  font-size: 13px;
+}
+
+.DocSearch-Hit-action>svg, .DocSearch-Reset>svg {
+  width: 1rem;
+  height: 1rem;
+}
