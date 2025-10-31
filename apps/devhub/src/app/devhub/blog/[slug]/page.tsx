@@ -1,4 +1,4 @@
-import { Typography } from "@/components/typography";
+import { Typography } from "@/components/global/typography";
 import { buttonVariants } from "@/components/ui/button";
 import { Author, getAllBlogStaticPaths, getBlogForSlug } from "@/lib/markdown";
 import { ArrowLeftIcon } from "lucide-react";

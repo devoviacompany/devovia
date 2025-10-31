@@ -1,11 +1,11 @@
-import { ModeToggle } from "@/components/theme-toggle";
+import { ModeToggle } from "@/components/global/theme-toggle";
 import Link from "next/link";
-import Anchor from "./anchor";
-import { SheetLeftbar } from "./leftbar";
+import Anchor from "@/components/global/anchor";
+import { SheetLeftbar } from "@/components/docs/leftbar";
 import { page_routes } from "@/lib/routes-config";
 import { SheetClose } from "@/components/ui/sheet";
 import Image from "next/image";
-import AlgoliaSearch from "./algolia-search";
+import AlgoliaSearch from "@/components/global/algolia-search";
 
 export const NAVLINKS = [
   {
@@ -18,10 +18,6 @@ export const NAVLINKS = [
   },
   {
     title: "Examples",
-    href: "#",
-  },
-  {
-    title: "Guides",
     href: "#",
   },
   {
@@ -79,7 +75,7 @@ export function Logo() {
         height={24}
         className="w-6 h-6"
       />
-      <h2 className="text-md font-bold font-code">Devovia Docs</h2>
+      <h2 className="text-md font-bold font-code">Devovia Dev Hub</h2>
     </Link>
   );
 }

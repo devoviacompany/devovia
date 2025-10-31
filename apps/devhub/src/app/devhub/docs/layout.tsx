@@ -1,4 +1,4 @@
-import { Leftbar } from "@/components/leftbar";
+import { Leftbar } from "@/components/docs/leftbar";
 
 export default function DocsLayout({
   children,

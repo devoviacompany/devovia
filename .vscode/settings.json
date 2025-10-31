@@ -127,6 +127,15 @@
       "lightColor": "red-600",
       "folderNames": ["redis"],
       "rootFolderNames": ["redis"]
+    },
+    // Frontend Services
+    {
+      "name": "devhub",
+      "base": "fastlane",
+      "color": "red-400",
+      "lightColor": "red-600",
+      "folderNames": ["devhub"],
+      "rootFolderNames": ["devhub"]
     }
   ]
 }

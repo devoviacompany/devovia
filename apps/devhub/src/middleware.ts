@@ -24,23 +24,23 @@ export function middleware(request: NextRequest) {
   // Block in production only
   if (!isLocalhost) {
     // 🚫 Block some things in production
-    // if (hostname.startsWith("dev.") || hostname.startsWith("vendor.")) {
+    // if (hostname.startsWith("devhub.")) {
     //   url.pathname = "/site/forbidden";
     //   return NextResponse.rewrite(url);
     // }
   }
 
   // ✅ Docs subdomain
-  // const isDocsSubdomain =
-  //   hostname.startsWith("docs.") ||
-  //   (hostname === "localhost:3000" && url.pathname.startsWith("/docs"));
+  const isDevhubSubdomain =
+    hostname.startsWith("devhub.") ||
+    (hostname === "localhost:3000" && url.pathname.startsWith("/devhub"));
 
-  // if (isDocsSubdomain) {
-  //   if (!url.pathname.startsWith("/docs")) {
-  //     url.pathname = `/docs${url.pathname}`;
-  //     return NextResponse.rewrite(url);
-  //   }
-  // }
+  if (isDevhubSubdomain) {
+    if (!url.pathname.startsWith("/devhub")) {
+      url.pathname = `/devhub${url.pathname}`;
+      return NextResponse.rewrite(url);
+    }
+  }
 
   return NextResponse.next();
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url><loc>https://devhub.devovia.tech/devhub/blog/file-rec</loc><lastmod>2025-10-31T02:12:47.374Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/blog/next-react</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/blog</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/algolia-search</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/components</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/components/code-block</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/components/custom</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/components/file-system</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/components/image-link</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/components/note</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/components/stepper</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/components/tabs</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/customize</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/installation</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/introduction</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/project-structure</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/quick-start-guide</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub/docs/getting-started/themes</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://devhub.devovia.tech/devhub</loc><lastmod>2025-10-31T02:12:47.377Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+</urlset>
