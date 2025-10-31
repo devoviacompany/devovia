@@ -79,26 +79,28 @@ def infer(message: str):
 
     tag = tags[predicted.item()]
 
+    images = []
     if confidence > 0.75:
         response = None
         for intent in intents["intents"]:
             if tag == intent["tag"]:
                 response = (
-                    random.choice(intent["responses"])
-                    if intent.get("responses")
-                    else None
+                    random.choice(intent["responses"]) if intent.get("responses") else None
                 )
+                images = intent.get("images", []) or []
                 break
         if response is None:
             response = "I do not understand..."
     else:
         response = "I do not understand..."
+        images = []
 
     return {
         "bot": bot_name,
         "intent": tag,
         "confidence": round(confidence, 4),
         "reply": response,
+        "images": images,
     }
 
 
@@ -128,6 +130,7 @@ async def chat_stream(message: str, request: Request):
                 "bot": result["bot"],
                 "intent": result["intent"],
                 "confidence": result["confidence"],
+                "images": result.get("images", []),
             }
         )
         # Stream chunks

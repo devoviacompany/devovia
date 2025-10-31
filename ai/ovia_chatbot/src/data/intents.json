@@ -79,6 +79,25 @@
         "Why did the hipster burn his mouth? He drank the coffee before it was cool.",
         "What did the buffalo say when his son left for college? Bison."
       ]
+    },
+    {
+      "tag": "login_help",
+      "patterns": [
+        "How do I log in?",
+        "Login steps",
+        "Sign in guide",
+        "I can't sign in",
+        "How to access my account"
+      ],
+      "responses": [
+        "To log in, click the Login button, enter your email and password, and press Sign In.",
+        "Open the login page, fill your credentials, and submit. If you forgot your password, use the 'Forgot password' link."
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+        "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170",
+        "https://images.unsplash.com/photo-1432821596592-e2c18b78144f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+      ]
     }
   ]
 }
