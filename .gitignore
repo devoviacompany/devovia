@@ -84,3 +84,11 @@ docker-compose.override.yml
 # Temporary folders
 *tasks/
 *temp/
+
+# ai folder ignores
+*.pth
+*.pyc
+
+# apps folder ignores
+
+# services folder ignores
