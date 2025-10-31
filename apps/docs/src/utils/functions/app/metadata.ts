@@ -17,8 +17,8 @@ interface MetadataProps {
 }
 
 export const generateMetadata = ({
-  title = `${process.env.NEXT_PUBLIC_APP_NAME || "Auvia"} – Developer Planning Platform`,
-  description = "Auvia is a developer planning platform that helps you plan your next project.",
+  title = `${process.env.NEXT_PUBLIC_APP_NAME || "Devovia Docs"} – Documentation`,
+  description = "Devovia is a developer platform that helps you in your next project.",
   image = "/icons/favicon-32x32.png",
   icons = [
     {
@@ -36,24 +36,20 @@ export const generateMetadata = ({
   ],
   noIndex = false,
   keywords = [
-    "Auvia",
-    "Developer Planning Platform",
-    "Project Planning",
+    "Devovia",
+    "Developer Platform",
     "Project Management",
     "Project Planning",
-    "Project Management",
-    "Project Planning",
-    "Project Management",
   ],
-  author = process.env.NEXT_PUBLIC_AUTHOR_NAME || "Auvia Team",
-  twitterHandle = "@auvia", // Replace with your real handle
+  author = process.env.NEXT_PUBLIC_AUTHOR_NAME || "Devovia Team",
+  twitterHandle = "@devovia", // Replace with your real handle
   type = "website",
   locale = "en_US",
   alternates = {},
   publishedTime,
   modifiedTime
 }: MetadataProps = {}): Metadata => {
-  const metadataBase = new URL(process.env.NEXT_PUBLIC_APP_URL || "https://auvia.vercel.app");
+  const metadataBase = new URL(process.env.NEXT_PUBLIC_APP_URL || "https://devovia.vercel.app");
   const imageUrl = image ? new URL(image, metadataBase).toString() : null;
 
   return {
