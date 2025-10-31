@@ -25,6 +25,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+*.pyc
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -136,3 +137,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Model artifacts
+src/data/data.pth
