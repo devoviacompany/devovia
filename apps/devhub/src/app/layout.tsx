@@ -34,7 +34,7 @@ export default function RootLayout({
           <NextTopLoader showSpinner={false} color="black" />
           <ThemeProvider>
             <Navbar />
-            <main className="sm:container mx-auto w-[90vw] h-auto scroll-smooth">
+            <main className="mx-auto w-full max-w-[1300px] px-4 sm:px-6 lg:px-8 h-auto scroll-smooth">
               {children}
             </main>
             {/* <Footer /> */}

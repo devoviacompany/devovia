@@ -349,6 +349,15 @@ pre>code {
   background-color: transparent;
 }
 
+/* Hide scrollbar utility */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;            /* Chrome, Safari, Opera */
+}
+
 /* Global Custom Scrollbar */
 :root {
   --scrollbar-thumb: rgba(113,

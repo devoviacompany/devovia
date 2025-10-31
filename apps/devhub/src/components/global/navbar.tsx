@@ -22,7 +22,7 @@ export const NAVLINKS = [
   },
   {
     title: "Tutorials",
-    href: "#",
+    href: "/tutorials",
   },
   {
     title: "Community",
