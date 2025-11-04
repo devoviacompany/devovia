@@ -220,7 +220,7 @@ const MobileNav = () => {
                   className="w-full"
                   variant="ghost"
                 >
-                  <Link href="/sign-in">
+                  <Link href="/auth/login">
                     Login
                   </Link>
                 </Button>
@@ -228,7 +228,7 @@ const MobileNav = () => {
                   onClick={() => setIsOpen(false)}
                   className="w-full"
                 >
-                  <Link href="/sign-up">
+                  <Link href="/auth/register">
                     Start building
                   </Link>
                 </Button>
@@ -254,12 +254,12 @@ const DesktopNav = () => {
           className="w-full"
           variant="ghost"
         >
-          <Link href="/sign-in">
+          <Link href="/auth/login">
             Login
           </Link>
         </Button>
         <Button>
-          <Link href="/sign-up">
+          <Link href="/auth/register">
             Start building
           </Link>
         </Button>
@@ -293,12 +293,12 @@ const FloatingNav = () => {
           className="w-full"
           variant="ghost"
         >
-          <Link href="/sign-in">
+          <Link href="/auth/login">
             Login
           </Link>
         </Button>
         <Button>
-          <Link href="/sign-up">
+          <Link href="/auth/register">
             <span>Start building</span>
           </Link>
         </Button>

@@ -11,10 +11,13 @@ import { Pricing } from "@/components/site/main/marketing//pricing";
 import { Security } from "@/components/site/main/marketing//security";
 import { Testimonials } from "@/components/site/main/marketing//testimonials";
 import { UseCases } from "@/components/site/main/marketing//use-cases";
+import { Navbar } from "@/components/site/navigation/navbar";
+import { Footer } from "@/components/site/navigation/footer";
 
 export default function Page() {
   return (
     <main>
+      <Navbar />
       <DivideX />
       <Hero />
       <DivideX />
@@ -40,6 +43,7 @@ export default function Page() {
       <DivideX />
       <CTA />
       <DivideX />
+      <Footer />
     </main>
   );
 }
