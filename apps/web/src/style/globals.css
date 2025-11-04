@@ -4,6 +4,49 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-charcoal-900: oklch(18.79% 0.004 259.73);
+  --color-charcoal-800: oklch(20.97% 0.005 273.33);
+  --color-charcoal-700: oklch(24.09% 0.004 259.33);
+  --color-gray-100: oklch(97.74% 0.001 98.14);
+  --color-gray-200: oklch(96.31% 0.001 98.14);
+  --color-gray-300: oklch(92.91% 0.004 249.61);
+  --color-gray-400: oklch(85.26% 0.003 247.93);
+  --color-gray-500: oklch(77.19% 0.004 247.72);
+  --color-gray-600: oklch(61.47% 0.005 262.94);
+
+  --shadow-aceternity:
+    0px 2px 3px -1px rgba(0, 0, 0, 0.1), 0px 1px 0px 0px rgba(25, 28, 33, 0.02),
+    0px 0px 0px 1px rgba(25, 28, 33, 0.08);
+
+  --background-repeating-gradient: radial-gradient(var(--color-gray-300) 1px,
+      transparent 1px);
+  --repeat-gradient-size: 10px 10px;
+
+  --animate-orbit: orbit 24s linear infinite;
+  --animate-counter-orbit: counter-orbit 24s linear infinite;
+
+  @keyframes orbit {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes counter-orbit {
+    0% {
+      transform: rotate(360deg);
+    }
+
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+}
+
 :root {
   --background: oklch(0.9789 0.0082 121.6272);
   --foreground: oklch(0.1636 0.0067 178.6389);
@@ -37,6 +80,12 @@
   --sidebar-accent-foreground: oklch(0.1636 0.0067 178.6389);
   --sidebar-border: oklch(0.9276 0.0058 264.5313);
   --sidebar-ring: oklch(0.8112 0.2193 135.8293);
+  --divide: var(--color-gray-300);
+  --canvas: var(--color-neutral-400);
+  --canvas-fill: var(--color-neutral-300);
+  --dots: var(--color-gray-300);
+  --line: var(--color-neutral-200);
+  --footer-link: #676767;
   --font-sans: "Inter", sans-serif;
   --font-serif: "Cairo", sans-serif;
   --font-mono: "Space Mono", monospace;
@@ -92,6 +141,12 @@
   --sidebar-accent-foreground: oklch(0.1636 0.0067 178.6389);
   --sidebar-border: oklch(0.2393 0.0142 266.9746);
   --sidebar-ring: oklch(0.8112 0.2193 135.8293);
+  --divide: var(--color-neutral-800);
+  --canvas: var(--color-neutral-200);
+  --canvas-fill: var(--color-neutral-800);
+  --dots: var(--color-neutral-800);
+  --line: var(--color-neutral-700);
+  --footer-link: var(--color-neutral-300);
   --font-sans: "Inter", sans-serif;
   --font-serif: "Cairo", sans-serif;
   --font-mono: "Space Mono", monospace;
@@ -146,6 +201,13 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  --color-divide: var(--divide);
+  --color-canvas: var(--canvas);
+  --color-canvas-fill: var(--canvas-fill);
+  --color-dots: var(--dots);
+  --color-line: var(--line);
+  --color-footer-link: var(--footer-link);
+
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
@@ -177,10 +239,28 @@ body {
 }
 
 @layer base {
+  button {
+    @apply cursor-pointer;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* ::-webkit-scrollbar {
+  display: none;
+} */
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--foreground)/0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: inherit;
 }

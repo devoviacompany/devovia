@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react";
+import { MoonIcon, SunIcon } from "@/components/site/icons/general";
 
 export default function ThemeToggle() {
   const [darkMode, setDarkMode] = useState(false);
@@ -37,13 +37,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      className="hover:shadow-input relative flex cursor-pointer items-center justify-center rounded-xl p-2 text-neutral-500 dark:text-neutral-500"
       aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
     >
       {darkMode ? (
-        <Sun className="w-5 h-5 text-gray-400" />
+        <SunIcon className="size-4 text-gray-600" />
       ) : (
-        <Moon className="w-5 h-5 text-gray-700" />
+        <MoonIcon className="absolute size-4 text-gray-600" />
       )}
     </button>
   );

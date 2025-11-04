@@ -12,9 +12,16 @@ export function middleware(request: NextRequest) {
     url.pathname.startsWith("/favicon.ico") ||
     url.pathname.startsWith("/robots.txt") ||
     url.pathname.startsWith("/sitemap.xml") ||
+    url.pathname.startsWith("/avatars") ||
     url.pathname.startsWith("/fonts") ||
     url.pathname.startsWith("/icons") ||
+    url.pathname.startsWith("/illustrations") ||
     url.pathname.startsWith("/images") ||
+    url.pathname.startsWith("/logos") ||
+    url.pathname.startsWith("/team") ||
+    url.pathname.startsWith("/avatar.webp") ||
+    url.pathname.startsWith("/dashboard.png") ||
+    url.pathname.startsWith("/placeholder.svg") ||
     url.pathname.startsWith("/api")
   ) {
     return NextResponse.next();

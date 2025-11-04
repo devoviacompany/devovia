@@ -5,12 +5,10 @@ import { toast } from "./app/use-toast";
 
 //? =========== Auth hooks imports ===========
 import useAuth from "./auth/use-auth";
-//? =========== Settings hooks imports ===========
-//? =========== Account hooks imports ===========
-//? =========== Billing hooks imports ===========
-//? =========== Notification hooks imports ===========
-//? =========== Support hooks imports ===========
-//? =========== Feedback hooks imports ===========
+
+//? =========== Site hooks imports ===========
+import { useTypewriter } from "./site/use-typewriter";
+import { useClickOutside } from "./site/use-click-outside";
 
 //? =========== User hooks imports ===========
 import useUserId from "./user/use-user-id";
@@ -22,12 +20,9 @@ export {
   toast,
   // Auth Hooks
   useAuth,
-  // Settings Hooks
-  // Account Hooks
-  // Billing Hooks
-  // Notification Hooks
-  // Support Hooks
-  // Feedback Hooks
+  // Site Hooks
+  useTypewriter,
+  useClickOutside,
   // User Hooks
   useUserId,
 }
