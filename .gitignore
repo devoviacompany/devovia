@@ -82,7 +82,7 @@ docker-compose.override.yml
 *.env
 
 # Temporary folders
-*tasks/
+./tasks/
 *temp/
 
 # ai folder ignores

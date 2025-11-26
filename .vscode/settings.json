@@ -136,6 +136,14 @@
       "lightColor": "red-600",
       "folderNames": ["devhub"],
       "rootFolderNames": ["devhub"]
+    },
+    {
+      "name": "workspace",
+      "base": "powershell",
+      "color": "#7adf35",
+      "lightColor": "#7adf35",
+      "folderNames": ["workspace"],
+      "rootFolderNames": ["workspace"]  
     }
   ]
 }

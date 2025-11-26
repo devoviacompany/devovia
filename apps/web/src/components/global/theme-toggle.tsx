@@ -37,13 +37,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="hover:shadow-input relative flex cursor-pointer items-center justify-center rounded-xl p-2 text-neutral-500 dark:text-neutral-500"
+      className="p-2 rounded hover:bg-muted transition-colors relative flex cursor-pointer items-center justify-center rounded-xl p-2 text-neutral-500 dark:text-neutral-500"
       aria-label={darkMode ? "Switch to light mode" : "Switch to dark mode"}
     >
       {darkMode ? (
         <SunIcon className="size-4 text-gray-600" />
       ) : (
-        <MoonIcon className="absolute size-4 text-gray-600" />
+        <MoonIcon className="size-4 text-gray-600" />
       )}
     </button>
   );

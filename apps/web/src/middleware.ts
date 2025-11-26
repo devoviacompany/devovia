@@ -39,12 +39,12 @@ export function middleware(request: NextRequest) {
 
   // ✅ Dev (Portfolio admin dashboard) subdomain
   const isDevSubdomain =
-    hostname.startsWith("dev.") ||
-    (hostname === "localhost:3000" && url.pathname.startsWith("/dev"));
+    hostname.startsWith("workspace.") ||
+    (hostname === "localhost:3000" && url.pathname.startsWith("/workspace"));
 
   if (isDevSubdomain) {
-    if (!url.pathname.startsWith("/dev")) {
-      url.pathname = `/dev${url.pathname}`;
+    if (!url.pathname.startsWith("/workspace")) {
+      url.pathname = `/workspace${url.pathname}`;
       return NextResponse.rewrite(url);
     }
   } else {

@@ -13,6 +13,9 @@ import { useClickOutside } from "./site/use-click-outside";
 //? =========== User hooks imports ===========
 import useUserId from "./user/use-user-id";
 
+//? =========== Workspace hooks imports ===========
+import useWorkspaceId from "./workspace/use-workspace-id";
+
 export {
   // App Hooks
   useIsMobile,
@@ -25,4 +28,6 @@ export {
   useClickOutside,
   // User Hooks
   useUserId,
+  // Workspace Hooks
+  useWorkspaceId,
 }
