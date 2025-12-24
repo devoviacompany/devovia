@@ -11,7 +11,7 @@ import { SideHeader } from "@/components/workspace/shared/side-header";
 import { useWorkspaceId } from "@/hooks";
 import { usePathname } from "next/navigation";
 import { sidebarNavData } from "@/components/workspace/shared/sidebar-nav-config";
-import { SidebarRight } from "@/components/workspace/shared/right-sidebar";
+import { NotificationSidebar } from "@/components/workspace/app/notifications/notification-sidebar";
 
 interface Props {
   children: React.ReactNode;
@@ -62,7 +62,7 @@ export default function WorkspaceLayout({ children }: Props) {
             </div>
           </SidebarInset>
         </div>
-        <SidebarRight />
+        <NotificationSidebar />
       </SidebarProvider>
     </div>
   )

@@ -14,7 +14,7 @@ export default function WorkspaceFeedbackPage() {
           </p>
         </div>
 
-        <div className="rounded-lg border bg-card p-6 shadow-sm">
+        <div className="space-y-12">
           <FeedbackForm />
         </div>
 
