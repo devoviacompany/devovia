@@ -258,6 +258,11 @@ body {
   }
 }
 
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
 /* ::-webkit-scrollbar {
   display: none;
 } */
