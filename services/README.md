@@ -7,6 +7,6 @@ All backend services are stored in this folder.
 - `api-gateway/` – API gateway service
 - `app/` – User app service
 - `builder/` – Builder service
-- `community/` – Community service
 - `dev/` – Developer service
 - `marketplace/` – Marketplace service
+- `server/` – All Services in one

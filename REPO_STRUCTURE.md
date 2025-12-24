@@ -43,7 +43,7 @@ devovia/
 │   ├── api-gateway/         # Auth, API gateway, proxy layer
 │   ├── app/                 # User account, billing, settings service
 │   ├── builder/             # Main project builder engine
-│   ├── community/           # Community service
+│   ├── server/              # ALL services in one
 │   ├── dev/                 # Developer service
 │   └── marketplace/         # Marketplace service
 │
