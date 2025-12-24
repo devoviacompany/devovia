@@ -1,5 +1,13 @@
-import DashboardComingSoon from "@/components/global/dashboard-coming-soon";
+import ContentSection from '@/components/workspace/app/shared/content-section';
+import SettingsForm from '@/components/workspace/app/settings/settings-form';
 
 export default function WorkspaceSettingsPage() {
-  return <DashboardComingSoon pageName="Settings Page" />;
-}
+  return (
+    <ContentSection
+      title='Settings'
+      desc='Update your settings.'
+    >
+      <SettingsForm />
+    </ContentSection>
+  );
+} 

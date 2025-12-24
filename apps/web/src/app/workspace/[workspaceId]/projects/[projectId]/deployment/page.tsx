@@ -1,5 +1,31 @@
-import DashboardComingSoon from "@/components/global/dashboard-coming-soon";
+"use client"
+
+import { DeployForm } from "@/components/workspace/projects/project/deployment/home/deploy-form"
+import Image from "next/image"
 
 export default function WorkspaceProjectsDeployPage() {
-  return <DashboardComingSoon pageName="Projects Deploy" />;
+  return (
+    <div className="flex flex-col max-w-5xl mx-auto w-full">
+      <section className="space-y-6 2xl:py-24">
+        <div className="flex flex-col items-center">
+          <Image
+            src="/icons/logo.png"
+            alt="Devovia"
+            width={50}
+            height={50}
+            className="hidden md:block"
+          />
+        </div>
+        <h1 className="text-xl md:text-4xl font-bold text-center">
+          Start Deployment with Buzz AI
+        </h1>
+        <p className="text-lg md:text-xl text-muted-foreground text-center">
+          Deployment now by chatting with AI
+        </p>
+        <div className="max-w-3xl mx-auto w-full">
+          <DeployForm />
+        </div>
+      </section>
+    </div>
+  );
 }

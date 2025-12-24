@@ -1,5 +1,6 @@
-import DashboardComingSoon from "@/components/global/dashboard-coming-soon";
+import { ProjectPlan } from "@/components/workspace/projects/project/planning/project-plan";
 
-export default function WorkspaceProjectsPlanningPlanPage() {
-  return <DashboardComingSoon pageName="Plan Page" />;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export default function WorkspaceProjectsPlanningPlanPage({ params }: { params: { id: string } }) {
+  return <ProjectPlan params={{ id: "1" }} />;
 }
