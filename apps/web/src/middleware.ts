@@ -37,10 +37,8 @@ export function middleware(request: NextRequest) {
     // }
   }
 
-  // ✅ Dev (Portfolio admin dashboard) subdomain
-  const isDevSubdomain =
-    hostname.startsWith("workspace.") ||
-    (hostname === "localhost:3000" && url.pathname.startsWith("/workspace"));
+  // ✅ Dev (Workspace admin dashboard) subdomain
+  const isDevSubdomain = url.pathname.startsWith("/workspace");
 
   if (isDevSubdomain) {
     if (!url.pathname.startsWith("/workspace")) {

@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { sidebarNavData } from "./sidebar-nav-config";
 import { Button } from "@/components/ui/button";
-import { File, FilePen, Folder, Pencil, Plus, MonitorSmartphone, Database, Brain, ServerCog } from "lucide-react";
+import { File, FilePen, Folder, Pencil, MonitorSmartphone, Database, Brain, ServerCog } from "lucide-react";
 import { useWorkspaceId } from "@/hooks";
 import useProjectId from "@/hooks/workspace/use-project-id";
 import Link from "next/link";
@@ -116,7 +116,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
     setEditingName(newProject.name);
 
     // Navigate to the new project's dashboard route
-    const dashboardTemplate = sidebarNavData.projects[0]?.url ?? "/:workspaceId/projects/:projectId";
+    const dashboardTemplate = sidebarNavData.projects[0]?.url ?? "/workspace/:workspaceId/projects/:projectId";
     const href = dashboardTemplate
       .replace(":workspaceId", workspaceId || "workspace")
       .replace(":projectId", newProject.id);
@@ -142,7 +142,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
     )?.url;
 
     if (!sectionTemplate) {
-      return `/${workspaceId}/projects/${projectIdFromRoute}`;
+      return `/workspace/${workspaceId}/projects/${projectIdFromRoute}`;
     }
 
     return sectionTemplate
@@ -152,7 +152,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
 
   const getProjectHref = () => {
     if (!workspaceId) return `/workspace/projects/${projectIdFromRoute || "project1"}`;
-    return `/${workspaceId}/projects/${projectIdFromRoute || "project1"}`;
+    return `/workspace/${workspaceId}/projects/${projectIdFromRoute || "project1"}`;
   };
 
   return (
@@ -163,7 +163,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
             <BreadcrumbList className="flex-nowrap overflow-x-auto py-1 scrollbar-hide text-sm">
               <BreadcrumbItem className="whitespace-nowrap">
                 <BreadcrumbLink
-                  href={workspaceId ? `/${workspaceId}/projects` : '/workspace/projects'}
+                  href={workspaceId ? `/workspace/${workspaceId}/projects` : '/workspace/projects'}
                   className="font-medium text-foreground"
                 >
                   Projects
@@ -233,7 +233,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
                     <SidebarMenuItem key={p.id}>
                       <div className="flex items-center gap-2">
                         <Link
-                          href={`/${workspaceId}/projects/${p.id}`}
+                          href={`/workspace/${workspaceId}/projects/${p.id}`}
                           className="flex-1"
                         >
                           <SidebarMenuButton
@@ -241,7 +241,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
                             className="px-2.5 md:px-2"
                             onClick={() => {
                               setSelectedSectionKey("dashboard");
-                              router.push(`/${workspaceId}/projects/${p.id}`);
+                              router.push(`/workspace/${workspaceId}/projects/${p.id}`);
                             }}
                           >
                             <Folder className="mr-2 h-4 w-4" />
@@ -289,7 +289,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
                   const sectionTemplate = sidebarNavData.projects.find(
                     (item) => getSectionKeyFromUrl(item.url) === section.key
                   )?.url;
-                  const href = (sectionTemplate ?? "/:workspaceId/projects/:projectId")
+                  const href = (sectionTemplate ?? "/workspace/:workspaceId/projects/:projectId")
                     .replace(":workspaceId", workspaceId || "workspace")
                     .replace(":projectId", projectIdFromRoute || "project1");
                   const isActive = pathname === href;
@@ -312,7 +312,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
 
               {hasProjectSelected && activeSectionKey === "planning" &&
                 planningItems.map((plan) => {
-                  const href = `/${workspaceId}/projects/${projectIdFromRoute}/planning/${plan.id}`;
+                  const href = `/workspace/${workspaceId}/projects/${projectIdFromRoute}/planning/${plan.id}`;
                   const isActive = pathname === href;
                   return (
                     <SidebarMenuItem key={plan.id}>
@@ -332,7 +332,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
 
               {hasProjectSelected && activeSectionKey === "design" &&
                 designItems.map((file) => {
-                  const href = `/${workspaceId}/projects/${projectIdFromRoute}/design/${file.id}`;
+                  const href = `/workspace/${workspaceId}/projects/${projectIdFromRoute}/design/${file.id}`;
                   const isActive = pathname === href;
                   return (
                     <SidebarMenuItem key={file.id}>
@@ -356,7 +356,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
 
               {hasProjectSelected && activeSectionKey === "testing" &&
                 testingItems.map((item) => {
-                  const href = `/${workspaceId}/projects/${projectIdFromRoute}/testing/${item.id}`;
+                  const href = `/workspace/${workspaceId}/projects/${projectIdFromRoute}/testing/${item.id}`;
                   const isActive = pathname === href;
                   const Icon = item.icon;
                   return (
@@ -377,7 +377,7 @@ export function ProjectsSidebar(props: React.ComponentProps<typeof Sidebar>) {
 
               {hasProjectSelected && activeSectionKey === "deployment" &&
                 deploymentItems.map((item) => {
-                  const href = `/${workspaceId}/projects/${projectIdFromRoute}/deployment/${item.id}`;
+                  const href = `/workspace/${workspaceId}/projects/${projectIdFromRoute}/deployment/${item.id}`;
                   const isActive = pathname === href;
                   const Icon = item.icon;
                   return (

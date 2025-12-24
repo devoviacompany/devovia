@@ -43,7 +43,7 @@ export function SideHeader() {
   const segments = pathname.split('/').filter(Boolean);
   const workspaceIndex = segments.indexOf(`${workspaceId}`);
 
-  // Get all segments after portfolio ID for breadcrumbs
+  // Get all segments after Workspace ID for breadcrumbs
   const crumbSegments = workspaceIndex >= 0 && workspaceId
     ? segments.slice(workspaceIndex + 1) // +1 to skip userId
     : [];
@@ -57,14 +57,14 @@ export function SideHeader() {
 
   // Dashboard sections for search
   const workspaceDashboardSections = [
-    { name: "Home", url: `/${workspaceId}` },
-    { name: "Projects", url: `/${workspaceId}/projects` },
-    { name: "Account", url: `/${workspaceId}/account` },
-    { name: "Settings", url: `/${workspaceId}/settings` },
-    { name: "Support", url: `/${workspaceId}/support` },
-    { name: "Feedback", url: `/${workspaceId}/feedback` },
-    { name: "Billing", url: `/${workspaceId}/billing` },
-    { name: "Notifications", url: `/${workspaceId}/notifications` },
+    { name: "Home", url: `/workspace/${workspaceId}` },
+    { name: "Projects", url: `/workspace/${workspaceId}/projects` },
+    { name: "Account", url: `/workspace/${workspaceId}/account` },
+    { name: "Settings", url: `/workspace/${workspaceId}/settings` },
+    { name: "Support", url: `/workspace/${workspaceId}/support` },
+    { name: "Feedback", url: `/workspace/${workspaceId}/feedback` },
+    { name: "Billing", url: `/workspace/${workspaceId}/billing` },
+    { name: "Notifications", url: `/workspace/${workspaceId}/notifications` },
 
   ];
 
@@ -97,7 +97,7 @@ export function SideHeader() {
               {/* workspace root link - always visible */}
               <BreadcrumbItem className="whitespace-nowrap">
                 <BreadcrumbLink
-                  href={workspaceId ? `/${workspaceId}` : '/workspace'}
+                  href={workspaceId ? `/workspace/${workspaceId}` : '/workspace'}
                   className="text-sm md:text-base"
                 >
                   Workspace
@@ -118,7 +118,7 @@ export function SideHeader() {
                   href = workspaceId ? `/${workspaceId}` : '/workspace';
                 } else {
                   label = currentSegmentMap[topSegment as keyof typeof currentSegmentMap] || topSegment;
-                  href = workspaceId ? `/${workspaceId}/${topSegment}` : `/workspace/${topSegment}`;
+                  href = workspaceId ? `/workspace/${workspaceId}/${topSegment}` : `/workspace/${topSegment}`;
                 }
 
                 if (!label || !href) return null;

@@ -21,30 +21,30 @@ export const sidebarNavData = {
     avatar: "/avatars/shadcn.jpg",
   },
   roles: {
-    portfolio: "Portfolio",
+    workspace: "Workspace",
   },
   navMain: [
     {
       title: "Home",
-      url: "/:workspaceId",
+      url: "/workspace/:workspaceId",
       icon: FolderKanban,
       isActive: true,
     },
     {
       title: "Projects",
-      url: "/:workspaceId/projects",
+      url: "/workspace/:workspaceId/projects",
       icon: Zap,
       isActive: false,
     },
     {
       title: "Account",
-      url: "/:workspaceId/account",
+      url: "/workspace/:workspaceId/account",
       icon: CircleUser,
       isActive: false,
     },
     {
       title: "Settings",
-      url: "/:workspaceId/settings",
+      url: "/workspace/:workspaceId/settings",
       icon: Settings2,
       isActive: false,
     },
@@ -52,13 +52,13 @@ export const sidebarNavData = {
   app: [
     {
       title: "Support",
-      url: "/:workspaceId/support",
+      url: "/workspace/:workspaceId/support",
       icon: LifeBuoy,
       isActive: false,
     },
     {
       title: "Feedback",
-      url: "/:workspaceId/feedback",
+      url: "/workspace/:workspaceId/feedback",
       icon: Send,
       isActive: false,
     },
@@ -66,42 +66,42 @@ export const sidebarNavData = {
   projects: [
     {
       title: "Dashboard",
-      url: "/:workspaceId/projects/:projectId",
+      url: "/workspace/:workspaceId/projects/:projectId",
       icon: LayoutDashboard,
     },
     {
       title: "Analytics",
-      url: "/:workspaceId/projects/:projectId/analytics",
+      url: "/workspace/:workspaceId/projects/:projectId/analytics",
       icon: ChartColumn,
     },
     {
       title: "Planning",
-      url: "/:workspaceId/projects/:projectId/planning",
+      url: "/workspace/:workspaceId/projects/:projectId/planning",
       icon: Waypoints
     },
     {
       title: "Design",
-      url: "/:workspaceId/projects/:projectId/design",
+      url: "/workspace/:workspaceId/projects/:projectId/design",
       icon: Palette
     },
     {
       title: "Development",
-      url: "/:workspaceId/projects/:projectId/development",
+      url: "/workspace/:workspaceId/projects/:projectId/development",
       icon: AppWindowMac
     },
     {
       title: "Testing",
-      url: "/:workspaceId/projects/:projectId/testing",
+      url: "/workspace/:workspaceId/projects/:projectId/testing",
       icon: BugPlay
     },
     {
       title: "Deployment",
-      url: "/:workspaceId/projects/:projectId/deployment",
+      url: "/workspace/:workspaceId/projects/:projectId/deployment",
       icon: Server
     },
     {
       title: "Settings",
-      url: "/:workspaceId/projects/:projectId/settings",
+      url: "/workspace/:workspaceId/projects/:projectId/settings",
       icon: Settings2
     },
   ],

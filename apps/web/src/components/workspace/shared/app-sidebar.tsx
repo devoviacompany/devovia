@@ -49,7 +49,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton size="lg" asChild className="md:h-8 md:p-0">
-                <a href={workspaceId ? `/${workspaceId}` : "/:workspaceId"}>
+                <a href={workspaceId ? `/workspace/${workspaceId}` : "/workspace/:workspaceId"}>
                   <div className="text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                     <Image
                       src="/icons/favicon-32x32.png"
