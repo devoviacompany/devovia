@@ -33,10 +33,15 @@ function SettingsFormSkeleton() {
 
 export default function SettingsForm() {
   const defaults = {
-    font: 'cairo',
-    fontSize: '16',
     theme: 'light',
     language: 'en',
+    // notifications part
+    type: 'all',
+    communication_emails: false,
+    marketing_emails: false,
+    social_emails: false,
+    security_emails: true,
+    mobile: false,
   } as const
 
   return (

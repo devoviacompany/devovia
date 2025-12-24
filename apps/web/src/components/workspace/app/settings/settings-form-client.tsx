@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
-import { Button, buttonVariants } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import {
   Command,
   CommandEmpty,
@@ -25,10 +24,10 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Slider } from '@/components/ui/slider'
+import { Switch } from '@/components/ui/switch'
 import { cn } from '@/utils/functions'
-import { CaretSortIcon, CheckIcon, ChevronDownIcon } from '@radix-ui/react-icons'
-import { useEffect, useRef } from 'react'
+import { CaretSortIcon, CheckIcon } from '@radix-ui/react-icons'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 const languages = [
@@ -38,108 +37,30 @@ const languages = [
 ]
 
 interface SettingsFormClientProps {
-  defaultValues: Partial<{ font: string; fontSize: string; theme: 'light' | 'dark'; language: string }>
+  defaultValues: Partial<{ theme: 'light' | 'dark'; language: string }>
 }
 
 export function SettingsFormClient({ defaultValues }: SettingsFormClientProps) {
-  type SettingsFormValues = { font: string; fontSize: string; theme: 'light' | 'dark'; language: string }
+  type SettingsFormValues = {
+    theme: 'light' | 'dark'
+    language: string
+    // notifications part
+    type: 'all' | 'mentions' | 'none'
+    communication_emails: boolean
+    marketing_emails: boolean
+    social_emails: boolean
+    security_emails: boolean
+    mobile: boolean
+  }
   const form = useForm<SettingsFormValues>({
     defaultValues,
   })
 
-  // cache to avoid re-loading a font that is already registered
-  const loadedFontsRef = useRef<Set<string>>(new Set())
-
-  function loadLocalFontIfNeeded(fontKey: string) {
+  function applyAppearance() {
     try {
-      // Adjust paths to match your public folder structure if different
-      // We will try to load a few common weights for each family. If a file is missing, we skip it.
-      const sources: Record<string, { family: string; files: Record<string, string[]> }> = {
-        cairo: {
-          family: 'Cairo',
-          files: {
-            '400': [
-              '/fonts/Cairo/Cairo-Regular.ttf',
-              '/fonts/Cairo-Regular.ttf',
-              '/fonts/Cairo/cairo.ttf',
-            ],
-            '500': [
-              '/fonts/Cairo/Cairo-Medium.ttf',
-              '/fonts/Cairo-Medium.ttf',
-            ],
-            '600': [
-              '/fonts/Cairo/Cairo-SemiBold.ttf',
-              '/fonts/Cairo-SemiBold.ttf',
-            ],
-            '700': [
-              '/fonts/Cairo/Cairo-Bold.ttf',
-              '/fonts/Cairo-Bold.ttf',
-            ],
-          },
-        },
-        lato: {
-          family: 'Lato',
-          files: {
-            '400': [
-              '/fonts/Lato/Lato-Regular.ttf',
-              '/fonts/Lato-Regular.ttf',
-              '/fonts/Lato/lato.ttf',
-            ],
-            '700': [
-              '/fonts/Lato/Lato-Bold.ttf',
-              '/fonts/Lato-Bold.ttf',
-            ],
-          },
-        },
-      }
-      const entry = sources[fontKey]
-      if (!entry) return
-      if (loadedFontsRef.current.has(entry.family)) return
-      if (!(document as any).fonts) return
-      const FaceCtor = (window as any).FontFace
-      if (!FaceCtor) return
-
-      const loaders: Promise<any>[] = []
-      for (const [weight, urls] of Object.entries(entry.files)) {
-        if (!urls || !urls.length) continue
-        // pick first candidate; if it fails, try others sequentially
-        const attempt = async () => {
-          for (const url of urls) {
-            try {
-              const face = new FaceCtor(entry.family, `url(${url}) format('truetype')`, { weight })
-              const loaded = await face.load()
-                ; (document as any).fonts.add(loaded)
-              return true
-            } catch {
-              // try next url
-            }
-          }
-          return false
-        }
-        loaders.push(attempt())
-      }
-
-      Promise.all(loaders).finally(() => {
-        loadedFontsRef.current.add(entry.family)
-      })
-    } catch {
-      // ignore
-    }
-  }
-
-  function applyAppearance(v: SettingsFormValues) {
-    try {
-      // Attempt to ensure local fonts are available
-      loadLocalFontIfNeeded(v.font)
-      // Apply base font size on the root (so rem/em scales if used)
-      const sizeNum = Number(v.fontSize)
-      if (!Number.isNaN(sizeNum) && sizeNum > 0) {
-        document.documentElement.style.fontSize = `${sizeNum}px`
-      }
-
       // Apply theme by toggling the `dark` class on the <html> element
-      const isDark = v.theme === 'dark'
-      document.documentElement.classList.toggle('dark', isDark)
+      document.documentElement.classList.add('dark');
+      localStorage.theme = "dark";
     } catch {
       // no-op if DOM not available (SSR) or any error occurs
     }
@@ -147,146 +68,21 @@ export function SettingsFormClient({ defaultValues }: SettingsFormClientProps) {
 
   // Keep the page appearance in sync with current form values (font, size, theme)
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/incompatible-library
     const subscription = form.watch((value) => {
       const v = value as SettingsFormValues
-      if (v && v.font && v.fontSize && v.theme) {
-        applyAppearance(v)
+      if (v && v.theme) {
+        applyAppearance()
       }
     })
     return () => subscription.unsubscribe()
     // form is stable from useForm; watch sets up internal subscription
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form])
 
   return (
     <Form {...form}>
       <form
         className='space-y-8'>
-        <FormField
-          control={form.control}
-          name='font'
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Font</FormLabel>
-              <div className='relative w-max'>
-                <FormControl>
-                  <select
-                    className={cn(
-                      buttonVariants({ variant: 'outline' }),
-                      'w-[200px] appearance-none font-normal'
-                    )}
-                    {...field}
-                  >
-                    <option value='cairo'>Cairo</option>
-                    <option value='lato'>Lato</option>
-                    <option value='system'>System</option>
-                  </select>
-                </FormControl>
-                <ChevronDownIcon className='absolute right-3 top-2.5 h-4 w-4 opacity-50' />
-              </div>
-              <FormDescription>
-                Set the font you want to use in the dashboard.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="fontSize"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Font Size: {field.value}px</FormLabel>
-              <FormControl>
-                <Slider
-                  min={12}
-                  max={24}
-                  step={1}
-                  value={[Number(field.value ?? '16')]}
-                  onValueChange={([value]) => field.onChange(String(value))}
-                />
-              </FormControl>
-              <FormDescription>
-                Adjust the base font size of the application.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name='theme'
-          render={({ field }) => (
-            <FormItem className='space-y-1'>
-              <FormLabel>Theme</FormLabel>
-              <FormDescription>
-                Select the theme for the dashboard.
-              </FormDescription>
-              <FormMessage />
-              <RadioGroup
-                onValueChange={field.onChange}
-                value={field.value}
-                className='grid max-w-md grid-cols-2 gap-8 pt-2'
-              >
-                <FormItem>
-                  <FormLabel className='[&:has([data-state=checked])>div]:border-primary'>
-                    <FormControl>
-                      <RadioGroupItem value='light' className='sr-only' />
-                    </FormControl>
-                    <div className='items-center rounded-md border-2 border-muted p-1 hover:border-accent'>
-                      <div className='space-y-2 rounded-sm bg-[#ecedef] p-2'>
-                        <div className='space-y-2 rounded-md bg-white p-2 shadow-sm'>
-                          <div className='h-2 w-[80px] rounded-lg bg-[#ecedef]' />
-                          <div className='h-2 w-[100px] rounded-lg bg-[#ecedef]' />
-                        </div>
-                        <div className='flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm'>
-                          <div className='h-4 w-4 rounded-full bg-[#ecedef]' />
-                          <div className='h-2 w-[100px] rounded-lg bg-[#ecedef]' />
-                        </div>
-                        <div className='flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm'>
-                          <div className='h-4 w-4 rounded-full bg-[#ecedef]' />
-                          <div className='h-2 w-[100px] rounded-lg bg-[#ecedef]' />
-                        </div>
-                      </div>
-                    </div>
-                    <span className='block w-full p-2 text-center font-normal'>
-                      Light
-                    </span>
-                  </FormLabel>
-                </FormItem>
-                <FormItem>
-                  <FormLabel className='[&:has([data-state=checked])>div]:border-primary'>
-                    <FormControl>
-                      <RadioGroupItem value='dark' className='sr-only' />
-                    </FormControl>
-                    <div className='items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground'>
-                      <div className='space-y-2 rounded-sm bg-slate-950 p-2'>
-                        <div className='space-y-2 rounded-md bg-slate-800 p-2 shadow-sm'>
-                          <div className='h-2 w-[80px] rounded-lg bg-slate-400' />
-                          <div className='h-2 w-[100px] rounded-lg bg-slate-400' />
-                        </div>
-                        <div className='flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm'>
-                          <div className='h-4 w-4 rounded-full bg-slate-400' />
-                          <div className='h-2 w-[100px] rounded-lg bg-slate-400' />
-                        </div>
-                        <div className='flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm'>
-                          <div className='h-4 w-4 rounded-full bg-slate-400' />
-                          <div className='h-2 w-[100px] rounded-lg bg-slate-400' />
-                        </div>
-                      </div>
-                    </div>
-                    <span className='block w-full p-2 text-center font-normal'>
-                      Dark
-                    </span>
-                  </FormLabel>
-                </FormItem>
-              </RadioGroup>
-            </FormItem>
-          )}
-        />
-
         <FormField
           control={form.control}
           name='language'
@@ -350,6 +146,215 @@ export function SettingsFormClient({ defaultValues }: SettingsFormClientProps) {
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name='theme'
+          render={({ field }) => (
+            <FormItem className='space-y-1'>
+              <FormLabel>Theme</FormLabel>
+              <FormDescription>
+                Select the theme for the dashboard.
+              </FormDescription>
+              <FormMessage />
+              <RadioGroup
+                onValueChange={field.onChange}
+                value={field.value}
+                className='grid max-w-md grid-cols-2 gap-8 pt-2'
+              >
+                <FormItem>
+                  <FormLabel className='[&:has([data-state=checked])>div]:border-primary'>
+                    <FormControl>
+                      <RadioGroupItem value='light' className='sr-only' />
+                    </FormControl>
+                    <div className='items-center rounded-md border-2 border-muted p-1 hover:border-accent'>
+                      <div className='space-y-2 rounded-sm bg-[#ecedef] p-2'>
+                        <div className='space-y-2 rounded-md bg-white p-2 shadow-sm'>
+                          <div className='h-2 w-[80px] rounded-lg bg-[#ecedef]' />
+                          <div className='h-2 w-[100px] rounded-lg bg-[#ecedef]' />
+                        </div>
+                        <div className='flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm'>
+                          <div className='h-4 w-4 rounded-full bg-[#ecedef]' />
+                          <div className='h-2 w-[100px] rounded-lg bg-[#ecedef]' />
+                        </div>
+                        <div className='flex items-center space-x-2 rounded-md bg-white p-2 shadow-sm'>
+                          <div className='h-4 w-4 rounded-full bg-[#ecedef]' />
+                          <div className='h-2 w-[100px] rounded-lg bg-[#ecedef]' />
+                        </div>
+                      </div>
+                    </div>
+                    <span className='block w-full p-2 text-center font-normal'>
+                      Light
+                    </span>
+                  </FormLabel>
+                </FormItem>
+
+                <FormItem>
+                  <FormLabel className='[&:has([data-state=checked])>div]:border-primary'>
+                    <FormControl>
+                      <RadioGroupItem value='dark' className='sr-only' />
+                    </FormControl>
+                    <div className='items-center rounded-md border-2 border-muted bg-popover p-1 hover:bg-accent hover:text-accent-foreground'>
+                      <div className='space-y-2 rounded-sm bg-slate-950 p-2'>
+                        <div className='space-y-2 rounded-md bg-slate-800 p-2 shadow-sm'>
+                          <div className='h-2 w-[80px] rounded-lg bg-slate-400' />
+                          <div className='h-2 w-[100px] rounded-lg bg-slate-400' />
+                        </div>
+                        <div className='flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm'>
+                          <div className='h-4 w-4 rounded-full bg-slate-400' />
+                          <div className='h-2 w-[100px] rounded-lg bg-slate-400' />
+                        </div>
+                        <div className='flex items-center space-x-2 rounded-md bg-slate-800 p-2 shadow-sm'>
+                          <div className='h-4 w-4 rounded-full bg-slate-400' />
+                          <div className='h-2 w-[100px] rounded-lg bg-slate-400' />
+                        </div>
+                      </div>
+                    </div>
+                    <span className='block w-full p-2 text-center font-normal'>
+                      Dark
+                    </span>
+                  </FormLabel>
+                </FormItem>
+              </RadioGroup>
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name='type'
+          render={({ field }) => (
+            <FormItem className='space-y-3 relative'>
+              <FormLabel>Notify me about...</FormLabel>
+              <FormControl>
+                <RadioGroup
+                  onValueChange={field.onChange}
+                  value={field.value}
+                  className='flex flex-col space-y-1'
+                >
+                  <FormItem className='flex items-center space-x-3 space-y-0'>
+                    <FormControl>
+                      <RadioGroupItem value='all' />
+                    </FormControl>
+                    <FormLabel className='font-normal'>
+                      All new messages
+                    </FormLabel>
+                  </FormItem>
+                  <FormItem className='flex items-center space-x-3 space-y-0'>
+                    <FormControl>
+                      <RadioGroupItem value='mentions' />
+                    </FormControl>
+                    <FormLabel className='font-normal'>
+                      Direct messages and mentions
+                    </FormLabel>
+                  </FormItem>
+                  <FormItem className='flex items-center space-x-3 space-y-0'>
+                    <FormControl>
+                      <RadioGroupItem value='none' />
+                    </FormControl>
+                    <FormLabel className='font-normal'>Nothing</FormLabel>
+                  </FormItem>
+                </RadioGroup>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className='relative'>
+          <h3 className='mb-4 text-lg font-medium'>Email Notifications</h3>
+          <div className='space-y-4'>
+            <FormField
+              control={form.control}
+              name='communication_emails'
+              render={({ field }) => (
+                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
+                  <div className='space-y-0.5'>
+                    <FormLabel className='text-base'>
+                      Communication emails
+                    </FormLabel>
+                    <FormDescription>
+                      Receive emails about your account activity.
+                    </FormDescription>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name='marketing_emails'
+              render={({ field }) => (
+                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
+                  <div className='space-y-0.5'>
+                    <FormLabel className='text-base'>
+                      Marketing emails
+                    </FormLabel>
+                    <FormDescription>
+                      Receive emails about new products, features, and more.
+                    </FormDescription>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name='social_emails'
+              render={({ field }) => (
+                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
+                  <div className='space-y-0.5'>
+                    <FormLabel className='text-base'>Social emails</FormLabel>
+                    <FormDescription>
+                      Receive emails for friend requests, follows, and more.
+                    </FormDescription>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name='security_emails'
+              render={({ field }) => (
+                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
+                  <div className='space-y-0.5'>
+                    <FormLabel className='text-base'>Security emails</FormLabel>
+                    <FormDescription>
+                      Receive emails about your account activity and security.
+                    </FormDescription>
+                  </div>
+                  <FormControl>
+                    <Switch
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      disabled
+                      aria-readonly
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+          </div>
+        </div>
 
         <div className='flex items-center gap-3'>
           <Button type='submit' className='cursor-pointer'>Update preferences</Button>
