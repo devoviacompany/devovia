@@ -1,10 +1,47 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ConfigModule } from '@nestjs/config';
+import configuration from './common/config/configuration';
+import { CorsMiddleware } from './common/middleware/cors.middleware';
+import { BotProtectionMiddleware } from './common/middleware/bot-protection.middleware';
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+      load: [configuration],
+    }),
+    // Database Module - MongoDB
+    // Database Module - PostgreSQL
+    // Auth Module
+    // Account Module
+    // Billing Module
+    // Blogs Module
+    // Chat Module
+    // Community Module
+    // Feedback Module
+    // Marketplace Module
+    // Notification Module
+    // Payment Module
+    // Search Module
+    // Settings Module
+    // Support Module
+    // Tutorial Module
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(CorsMiddleware).forRoutes('*');
+
+    consumer
+      .apply(BotProtectionMiddleware)
+      .exclude(
+        { path: 'health', method: RequestMethod.GET },
+        { path: 'app/health', method: RequestMethod.GET },
+      )
+      .forRoutes('*');
+  }
+}
