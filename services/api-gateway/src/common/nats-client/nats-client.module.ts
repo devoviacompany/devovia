@@ -1,28 +1,25 @@
 import { Module } from '@nestjs/common';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import configuration from '../config/configuration';
 
 @Module({
   imports: [
-    ClientsModule.register([
+    ClientsModule.registerAsync([
       {
         name: 'NATS_SERVICE',
-        transport: Transport.NATS,
-        options: {
-          servers: ['nats://localhost:4222'],
+        useFactory: () => {
+          return {
+            transport: Transport.NATS,
+            options: {
+              servers: [configuration().NATS_URL || ''],
+              user: configuration().NATS_USER,
+              pass: configuration().NATS_PASSWORD,
+            },
+          };
         },
       },
     ]),
   ],
-  exports: [
-    ClientsModule.register([
-      {
-        name: 'NATS_SERVICE',
-        transport: Transport.NATS,
-        options: {
-          servers: ['nats://localhost:4222'],
-        },
-      },
-    ]),
-  ],
+  exports: [ClientsModule],
 })
 export class NatsClientModule {}

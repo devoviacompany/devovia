@@ -1,0 +1,57 @@
+name: devovia-backend-services
+
+services:
+  mongo:
+    image: mongo:7.0.12
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - devovia-backend-services
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: devovia
+      POSTGRES_PASSWORD: devovia_password
+      POSTGRES_DB: devovia
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - devovia-backend-services
+
+  nats:
+    image: nats:2.10-alpine
+    command: >-
+      -js
+      -a 0.0.0.0
+      -p 4222
+      -m 8222
+      -user ${NATS_USER:-devovia}
+      -pass ${NATS_PASSWORD:-devovia_password}
+    environment:
+      - NATS_USER=devovia
+      - NATS_PASSWORD=devovia_password
+    networks:
+      - devovia-backend-services
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      target: production
+    restart: unless-stopped
+    env_file: ./api-gateway/.env
+    ports:
+      - 4000:4000
+    networks:
+      - devovia-backend-services
+    depends_on:
+      - mongo
+      - postgres
+      - nats
+
+volumes:
+  mongo_data:
+  postgres_data:
+networks:
+  devovia-backend-services:
+    driver: bridge

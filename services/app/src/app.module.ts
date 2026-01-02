@@ -1,9 +1,7 @@
-import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './common/config/configuration';
-import { CorsMiddleware } from './common/middleware/cors.middleware';
-import { BotProtectionMiddleware } from './common/middleware/bot-protection.middleware';
 
 @Module({
   imports: [
@@ -32,16 +30,4 @@ import { BotProtectionMiddleware } from './common/middleware/bot-protection.midd
   controllers: [AppController],
   providers: [],
 })
-export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(CorsMiddleware).forRoutes('*');
-
-    consumer
-      .apply(BotProtectionMiddleware)
-      .exclude(
-        { path: 'health', method: RequestMethod.GET },
-        { path: 'app/health', method: RequestMethod.GET },
-      )
-      .forRoutes('*');
-  }
-}
+export class AppModule {}

@@ -10,6 +10,8 @@ async function bootstrap() {
       transport: Transport.NATS,
       options: {
         servers: [configuration().NATS_URL || ''],
+        user: configuration().NATS_USER,
+        pass: configuration().NATS_PASSWORD,
       },
     },
   );

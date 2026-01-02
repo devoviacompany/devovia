@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { AppModule } from './app.module';
 import configuration from './common/config/configuration';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice<MicroserviceOptions>(
@@ -10,8 +11,17 @@ async function bootstrap() {
       transport: Transport.NATS,
       options: {
         servers: [configuration().NATS_URL || ''],
+        user: configuration().NATS_USER,
+        pass: configuration().NATS_PASSWORD,
       },
     },
+  );
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      transform: true,
+    }),
   );
 
   await app.listen();

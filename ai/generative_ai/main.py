@@ -41,13 +41,19 @@ async def start_nats_listener() -> None:
 
     subject = '{"cmd":"getGenerativeAIHealth"}'
 
-    # Read NATS URL from environment with a sensible default for local dev.
+    # Read NATS connection settings from environment.
     nats_url = os.getenv("NATS_URL", "")
+    nats_user = os.getenv("NATS_USER")
+    nats_password = os.getenv("NATS_PASSWORD")
+
+    if not nats_url:
+        logger.error("NATS_URL is not set. Please define it in the environment.")
+        raise SystemExit(1)
 
     logger.info("Starting Generative AI NATS microservice...")
     logger.info("Connecting to NATS at %s", nats_url)
 
-    nc = await nats.connect(nats_url)
+    nc = await nats.connect(nats_url, user=nats_user, password=nats_password)
     logger.info("Connected to NATS")
 
     async def handle_get_ai_health(msg: nats.aio.msg.Msg) -> None:
