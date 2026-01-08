@@ -15,6 +15,7 @@ import useUserId from "./user/use-user-id";
 
 //? =========== Workspace hooks imports ===========
 import useWorkspaceId from "./workspace/use-workspace-id";
+import useAdminId from "./admin/use-admin-id";
 
 export {
   // App Hooks
@@ -30,4 +31,6 @@ export {
   useUserId,
   // Workspace Hooks
   useWorkspaceId,
+  // Admin Hooks
+  useAdminId,
 }

@@ -39,10 +39,16 @@ export function middleware(request: NextRequest) {
 
   // ✅ Dev (Workspace admin dashboard) subdomain
   const isDevSubdomain = url.pathname.startsWith("/workspace");
+  const isAdminSubdomain = url.pathname.startsWith("/admin");
 
   if (isDevSubdomain) {
     if (!url.pathname.startsWith("/workspace")) {
       url.pathname = `/workspace${url.pathname}`;
+      return NextResponse.rewrite(url);
+    }
+  } else if (isAdminSubdomain) {
+    if (!url.pathname.startsWith("/admin")) {
+      url.pathname = `/admin${url.pathname}`;
       return NextResponse.rewrite(url);
     }
   } else {
