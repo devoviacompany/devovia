@@ -1263,7 +1263,7 @@ importers:
         specifier: ^8.20.0
         version: 8.40.0(eslint@9.34.0(jiti@2.6.1))(typescript@5.9.2)
 
-  services/devovia-manage:
+  services/devovia-manage-service:
     dependencies:
       '@nestjs/common':
         specifier: ^11.0.1
